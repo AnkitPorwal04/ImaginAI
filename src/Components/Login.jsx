@@ -1,13 +1,13 @@
 import React from 'react'
 import { Provider, Auth } from '../firebase-config'
-import { signInWithRedirect } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigator = useNavigate();
   
   const signIn = async () =>{
-    await signInWithRedirect(Auth, Provider)
+    await signInWithPopup(Auth, Provider)
     .then(res=>{console.log(res); navigator("/")})
     .catch(err=>console.log(err))
   }
